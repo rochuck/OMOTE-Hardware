@@ -30,16 +30,50 @@ This fork has a few differences:
 ### ERRATA
 
 The current board and BOM have the following issues:
- 1. The vias under the esp are not electrically connected to ground. This will be modded after the fact
- 1. The TVS diodes for the USB, in the [BOM](https://github.com/rochuck/OMOTE-Hardware/blob/main/PCB/BOM.csv) are the wrong size. They will be bodged into place.
- 1. The ch340c was unavailable from digikey.  A ch340G is used instead from a module, this chip needs an external crystal. The crystal was taken off the adapter board that the ch340G came on
- 1. The lithium-ion charger is unavailable from digikey. A MCP73831T2ACI/OT sot23-5 is bodged in its place until i can get the correct part from AliExpress.
+1. The vias under the ESP32 are not connected to ground; this will be modified manually.
+1. The USB TVS diodes listed in the [BOM](https://github.com/rochuck/OMOTE-Hardware/blob/main/PCB/BOM.csv) are the wrong size. For now I've removed the part and used 0Ω resistors 
+1. The CH340C was unavailable from Digi-Key; a CH340G module was used instead. The CH340G requires an external crystal, which was taken from its adapter board.
+1. The Li-ion charger is unavailable from Digi-Key. A MCP73831T2ACI/OT (SOT-23-5) is temporarily used until the correct part can be sourced from AliExpress.
 
  These changes are shown here:
 
 <div align="center">
   <img src="images/bodge.png" width="50%">
 </div>
+
+# The Charger changes are as follows:
+
+As per the diagrams below:
+### TP4056
+* on the tp 4056 temp is not used: grounded
+* the 4.7KΩ resistor sets charge current to ~300ma
+* the standby pin goes low when not charging -> the led means charging
+* the chrg pin is pulled low when charging. This is read by the micro
+### MCP73831
+* the stat pin is the same as the charging pin, i.e. connected to the micro? but will need a pullup. we sill just leave this disconnected.
+* The prog resistor  at 4k7 will result a slightly lower charge current. ~213mA at 4.2V
+
+### The Upshot
+
+
+|Function|TP4056 pin| mcp pin|
+|-|-|-|
+|VCC|4|4|
+|GND|3|2|
+|PROG|2|5|
+|BATT|5|3|
+
+
+<div align="center">
+  <img src="images/existing-li.png" width="25%"><img src="images/new-li.png" width="75%">
+</div>
+
+
+<div align="center">
+  <img src="images/charger.png" width="50%">
+</div>
+
+
 
 ### Building the hardware
 
