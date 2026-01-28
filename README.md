@@ -29,6 +29,9 @@ This fork has a few differences:
 
 ### ERRATA
 
+⚠️
+The biggest major problem is that the battery terminal connector is reversed from shipped lithium ion battery packs. Not sure if they are a standard, buy i could have blown shit up if I didnt notice this!⚠️⚡
+
 The current board and BOM have the following issues:
 1. The vias under the ESP32 are not connected to ground; this will be modified manually.
 1. The USB TVS diodes listed in the [BOM](https://github.com/rochuck/OMOTE-Hardware/blob/main/PCB/BOM.csv) are the wrong size. For now I've removed the part and used 0Ω resistors 
