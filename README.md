@@ -21,6 +21,26 @@ OMOTE is an ESP32 based open source universal remote. Its capacitive 2.8” touc
 
 The hardware for OMOTE is designed to be easily replicated, using 3D-printed parts, a 2-layer PCB and commonly available components. The mechanical and PCB design can be considered mostly complete. Still, there might be areas for improvement, for example the IR range could be further optimized.
 
+### This fork of OMOTE
+
+This fork has a few differences:
+ * The vias on the esp have been enlarged to make the board cheaper to produce
+ * A BOM (omote.csv) for digikey has been included to source parts
+
+### ERRATA
+
+The current board and BOM have the following issues:
+ 1. The vias under the esp are not electrically connected to ground. This will be modded after the fact
+ 1. The TVS diodes for the USB, in the [BOM](https://github.com/rochuck/OMOTE-Hardware/blob/main/PCB/BOM.csv) I used, BOM on the USB are the wrong size. They will be bodged into place.
+ 1. The ch340c was unavailable from digikey.  A ch340G is used instead from a module, this chip needs an external crystal. The crystal was taken off the adapter board that the ch340G came on
+ 1. The lithium-ion charger is unavailable from digikey. A MCP73831T2ACI/OT sot23-5 is bodged in its place until i can get the correct part from AliExpress.
+
+ These changes are shown here:
+
+<div align="center">
+  <img src="images/bodge.png" width="50%">
+</div>
+
 ### Building the hardware
 
 The central component of OMOTE is its PCB. If you want to build the PCB yourself, you will need SMT-reflow tools like a hot plate or a hot-air station. The 2-layered board and a solder paste stencil can be ordered from any PCB manufacturer using the [KiCad files](https://github.com/OMOTE-Community/OMOTE-Hardware/tree/main/PCB). Manufacturers like OSHPARK or Aisler will accept these files directly. For JLCPCB or PCBWay, you can use their plugin to export the optimized Gerber files. A [zip archive](https://github.com/OMOTE-Community/OMOTE-Hardware/blob/main/PCB/production/gerber.zip) with theses Gerber files is also included in this repository. You can also choose to order assembled PCBs from JLCPCB using the [instructions](https://github.com/OMOTE-Community/OMOTE-Hardware/wiki/How-to-order-assembled-PCBs) in the Wiki.
