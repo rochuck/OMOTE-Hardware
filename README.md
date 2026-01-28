@@ -31,7 +31,7 @@ This fork has a few differences:
 
 The current board and BOM have the following issues:
  1. The vias under the esp are not electrically connected to ground. This will be modded after the fact
- 1. The TVS diodes for the USB, in the [BOM](https://github.com/rochuck/OMOTE-Hardware/blob/main/PCB/BOM.csv) I used, BOM on the USB are the wrong size. They will be bodged into place.
+ 1. The TVS diodes for the USB, in the [BOM](https://github.com/rochuck/OMOTE-Hardware/blob/main/PCB/BOM.csv) are the wrong size. They will be bodged into place.
  1. The ch340c was unavailable from digikey.  A ch340G is used instead from a module, this chip needs an external crystal. The crystal was taken off the adapter board that the ch340G came on
  1. The lithium-ion charger is unavailable from digikey. A MCP73831T2ACI/OT sot23-5 is bodged in its place until i can get the correct part from AliExpress.
 
