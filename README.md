@@ -4,7 +4,7 @@
 
 ## Overview
 
-OMOTE is an ESP32-based open-source universal remote. Its 2.8" capacitive touchscreen provides an intuitive and responsive user interface for switching devices and settings. No hub or docking station is required, as the remote features infrared, Wi‑Fi, and Bluetooth connectivity. With its well-optimized power consumption, OMOTE can run for months on a single charge. Because the design files are open source, you can fully customize them to your devices and needs.
+This is my version of the OMOTE project. Please see the original [here](https://github.com/OMOTE-Community/OMOTE-Hardware). It is an ESP32-based open-source universal remote. Its 2.8" capacitive touchscreen provides an intuitive and responsive user interface for switching devices and settings. No hub or docking station is required, as the remote features infrared, Wi‑Fi, and Bluetooth connectivity. With its well-optimized power consumption, OMOTE can run for months on a single charge. 
 
 <div align="center">
   <img src="images/GUI_sliding_demo.gif" width="50%">
@@ -17,9 +17,6 @@ OMOTE is an ESP32-based open-source universal remote. Its 2.8" capacitive touchs
 - Press any button or simply lift the remote to wake it
 - Up to six months of battery life using a 2000 mAh Li‑Po battery
 
-### The state of this project
-
-The hardware for OMOTE is designed to be easily replicated using 3D-printed parts, a two-layer PCB, and commonly available components. The mechanical and PCB design can be considered mostly complete, though there may be areas for improvement—for example, the IR range could be further optimized.
 
 ### This fork of OMOTE
 
@@ -30,7 +27,7 @@ This fork has a few differences:
 ### Errata
 
 ⚠️
-The most significant issue is that the battery terminal connector is reversed compared to shipped lithium‑ion battery packs. I'm not sure if this is a standard; it could have caused serious damage if I hadn't noticed. ⚠️⚡
+The most significant issue (for me) is that the battery terminal connector is reversed compared to shipped lithium‑ion battery packs. After some research it seems that the battery terminal polarity is not standardized; it could have caused serious damage if I hadn't noticed. ⚠️⚡
 
 The current board and BOM have the following issues:
 1. The vias under the ESP32 are not connected to ground; this will be modified manually.
@@ -77,39 +74,27 @@ As shown in the diagrams below:
 
 ### Building the hardware
 
-The central component of OMOTE is its PCB. If you want to build the PCB yourself, you will need SMT-reflow tools such as a hot plate or a hot-air station. The two-layer board and a solder paste stencil can be ordered from any PCB manufacturer using the [KiCad files](https://github.com/OMOTE-Community/OMOTE-Hardware/tree/main/PCB). Manufacturers like OSHPark or Aisler will accept these files directly. For JLCPCB or PCBWay, you can use their plugin to export optimized Gerber files. A [zip archive](https://github.com/OMOTE-Community/OMOTE-Hardware/blob/main/PCB/production/gerber.zip) with these Gerber files is also included in this repository. You can also choose to order assembled PCBs from JLCPCB using the [instructions](https://github.com/OMOTE-Community/OMOTE-Hardware/wiki/How-to-order-assembled-PCBs) in the Wiki.
+It was easy to order the board from JLCPCB. If I had a do-over, I would have ordered assembled PCBs from JLCPCB using the [instructions](https://github.com/OMOTE-Community/OMOTE-Hardware/wiki/How-to-order-assembled-PCBs) in the Wiki.
 
-The electrical components can be sourced from LCSC, but most should also be available from the usual suppliers such as Digi‑Key or Mouser. See the [BOM](https://github.com/OMOTE-Community/OMOTE-Hardware/blob/main/PCB/BOM.csv) for all necessary components.
-
-The project uses a 2000 mAh Li‑Ion battery with a JST‑PHR‑2 connector. Any 3.7 V Li‑Ion battery that fits within 50×34×10 mm should work. From revision 4 onward, the board includes battery protection features against overcurrent and undervoltage. It's still a good idea to use a battery with integrated protection (usually visible as a small PCB under Kapton tape between the battery cables).
-
-The 2.8" capacitive touchscreen can be sourced from Adafruit ([2770](https://www.adafruit.com/product/2770)). If you search for the part number CH280QV10‑CT, you can also buy this display directly from the manufacturer via [Alibaba](https://www.alibaba.com/product-detail/High-Quality-240-3-rgb-320_1600408828330.html). Shipping from China is expensive, so this only makes sense if you order multiple displays. In general, the cost for a single OMOTE is fairly high. Please join the [Discord server](https://discord.gg/5PnYFAsKsG) and then check the [buy-sell page](https://discord.com/channels/1138116475559882852/1153343867681243279) to see if you can share the cost of PCBs and components with others.
+I had issues ordering the correct parts, which were hard to find outside of JCSC.
 
 <div align="center">
   <img src="images/OMOTE_parts.jpg" width="80%">
 </div>
 
-The [housing and buttons](https://github.com/OMOTE-Community/OMOTE-Hardware/tree/main/CAD) can be printed using PLA or PETG. The parts shown in the project photos were sliced in PrusaSlicer with a layer height of 0.25 mm and printed using ColorFabb PETG. It is important that the case is printed with its flat side toward the print bed using adequate support structures. If your printer is well calibrated, the cover plate will snap onto the case.
+The [housing and buttons](https://github.com/OMOTE-Community/OMOTE-Hardware/tree/main/CAD) were 3D-printed using PLA. I printed the keypad with 0.2 mm nozzles in dual color; it worked well. The buttons were mostly white so the backlight could show through.
+
+The only problem I had was that the power button in the top right was too thick or positioned incorrectly. I will have to notch the back of the button so that the case will snap closed tightly without continuously pressing the power button.
 
 ### Firmware
-The firmware is available at [OMOTE ESP32 Firmware](https://github.com/OMOTE-Community/OMOTE-Firmware/)
+My fork of the firmware is available at [Chuck's OMOTE ESP32 Firmware](https://github.com/rochuck/OMOTE-Firmware/)
 
-## Contributing
-
-If you have a suggestion for an improvement, please fork the repo and create a pull request. You can also open an issue, or for more general feature requests, head over to the [discussions](https://github.com/OMOTE-Community/OMOTE-Hardware/discussions).
 
 ## License
 
 Distributed under the GPL v3 License. See [LICENSE](https://github.com/OMOTE-Community/OMOTE-Hardware/blob/main/LICENSE) for more information.
 
-## Contact
+## Finally
 
-[![OMOTE Discord](https://discordapp.com/api/guilds/1138116475559882852/widget.png?style=banner2 "OMOTE Discord")][link1]
+Again, this is just my fork. Please see the original [here](https://github.com/OMOTE-Community/OMOTE-Hardware).
 
-Join the OMOTE Discord: [https://discord.gg/5PnYFAsKsG](https://discord.gg/5PnYFAsKsG)
-
-Maximilian Kern - [kernm.de](https://kernm.de)
-
-Project page on Hackaday.io: [https://hackaday.io/project/191752-omote-diy-universal-remote](https://hackaday.io/project/191752-omote-diy-universal-remote)
-
-[link1]: https://discord.gg/5PnYFAsKsG
