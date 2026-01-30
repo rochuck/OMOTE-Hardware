@@ -31,7 +31,7 @@ The most significant issue (for me) is that the battery terminal connector is re
 
 The current board and BOM have the following issues:
 1. The vias under the ESP32 are not connected to ground; this will be modified manually.
-1. The USB TVS diodes listed in the [BOM](https://github.com/rochuck/OMOTE-Hardware/blob/main/PCB/BOM.csv) are the wrong size. For now, I've removed the part and used 0 Ω resistors.
+1. The USB TVS diodes i ordered (listed in my digikey [BOM](https://github.com/rochuck/OMOTE-Hardware/blob/main/PCB/omote.csv)) are the wrong part. For now, I've removed the part and used 0 Ω resistors.
 1. The CH340C was unavailable from Digi‑Key; a CH340G module was used instead. The CH340G requires an external crystal, which was taken from its adapter board.
 1. The Li‑ion charger is unavailable from Digi‑Key. An MCP73831T2ACI/OT (SOT‑23‑5) is being used temporarily until the correct part can be sourced from AliExpress.
 
